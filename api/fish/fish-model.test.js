@@ -35,5 +35,10 @@ describe('Fish db access functions', () => {
             const rows = await db('fish')
             expect(rows).toHaveLength(5)
         })
+        it('resolves to the newly inserted fish', async () => {
+            const awaitingFish = { species: 'orange' }
+            const newFish = await Fish.insert(awaitingFish)
+            expect(newFish).toMatchObject({ id: 5, species: 'orange' })
+        })
     })
 })
