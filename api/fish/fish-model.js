@@ -1,7 +1,7 @@
 const db = require('../../data/dbConfig')
 
 function getAll() {
-    return null
+    return db('fish')
 }
 
 async function insert(fish) {
