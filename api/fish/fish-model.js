@@ -4,8 +4,17 @@ function getAll() {
     return db('fish')
 }
 
+function getById(id) {
+    return db('fish')
+        .where('id', id).first()
+}
+
 async function insert(fish) {
-    return null
+    return db('fish')
+        .insert(fish)
+        .then(([id]) => {
+            return getById(id)
+        })
 }
 
 function remove(id) {

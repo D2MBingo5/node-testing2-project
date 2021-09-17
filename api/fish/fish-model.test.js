@@ -28,5 +28,12 @@ describe('Fish db access functions', () => {
             expect(fishes[1]).toMatchObject({ id: 2, species: 'blue' })
         })
     })
-    
+
+    describe('Fish.insert', () => {
+        it('adds a new hobbit to the table', async () => {
+            await Fish.insert({ species: 'pink' })
+            const rows = await db('fish')
+            expect(rows).toHaveLength(5)
+        })
+    })
 })
